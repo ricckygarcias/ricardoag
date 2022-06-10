@@ -59,11 +59,16 @@ public class ConsultaDAO extends Conexao {
         try
         {
             ArrayList consultas = new ArrayList();
+            /*String sql = "SELECT IDCONSULTA, MEDICO.NOME, PACIENTE.NOME, CONVENIO FROM CONSULTA "
+                    + "JOIN MEDICO ON CONSULTA.ID_MEDICO = MEDICO.IDMEDICO "
+                    + "JOIN PACIENTE ON CONSULTA.ID_PACIENTE = PACIENTE.IDPACIENTE ORDER BY IDCONSULTA";
+            */
             String sql = "SELECT * FROM CONSULTA ORDER BY IDCONSULTA";
             ResultSet rs = this.getResultSet(sql);
             while (rs.next())
             {
                 Consulta consulta = new Consulta();
+                consulta.setIdconsulta(rs.getInt("IDCONSULTA"));
                 consulta.setId_medico(rs.getInt("ID_MEDICO"));
                 consulta.setId_paciente(rs.getInt("ID_PACIENTE"));
                 consulta.setConvenio(rs.getString("CONVENIO"));

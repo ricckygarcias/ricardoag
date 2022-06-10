@@ -30,7 +30,7 @@ public class TelaConsulta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        txtIdPaciente = new javax.swing.JTextField();
+        txtIdConsulta = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -39,6 +39,8 @@ public class TelaConsulta extends javax.swing.JFrame {
         cboMedico = new javax.swing.JComboBox<>();
         cboPaciente = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtConvenio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -53,8 +55,8 @@ public class TelaConsulta extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("MÉDICO:");
 
-        txtIdPaciente.setEditable(false);
-        txtIdPaciente.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtIdConsulta.setEditable(false);
+        txtIdConsulta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
         btnNovo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnNovo.setText("Novo");
@@ -90,7 +92,7 @@ public class TelaConsulta extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false
@@ -123,6 +125,11 @@ public class TelaConsulta extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("PACIENTE:");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("CONVÊNIO:");
+
+        txtConvenio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -137,14 +144,18 @@ public class TelaConsulta extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtConvenio))
                     .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(98, 98, 98)
-                                .addComponent(txtIdPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(169, 169, 169)
                                 .addComponent(jLabel4))))
@@ -175,7 +186,7 @@ public class TelaConsulta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(txtIdPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtIdConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
@@ -184,9 +195,13 @@ public class TelaConsulta extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cboMedico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cboPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtConvenio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -195,10 +210,6 @@ public class TelaConsulta extends javax.swing.JFrame {
 
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         this.limparCampos();
-        Medico medico = (Medico)cboMedico.getSelectedItem();
-        
-        String msg = medico.getNome();
-        JOptionPane.showMessageDialog(rootPane, msg);
     }//GEN-LAST:event_btnNovoActionPerformed
 
     public void carregarCombos()
@@ -209,8 +220,8 @@ public class TelaConsulta extends javax.swing.JFrame {
         Iterator itmedico = medicos.iterator();
         while(itmedico.hasNext())
         {
-            Medico medico = (Medico)itmedico.next(); //converte o registro para um objeto do tipo aluno
-            cboMedico.addItem(medico.toString());
+            Medico medico = (Medico)itmedico.next(); //converte o registro para um objeto do tipo medico
+            cboMedico.addItem(medico);
         }
         
         ArrayList pacientes;
@@ -219,8 +230,8 @@ public class TelaConsulta extends javax.swing.JFrame {
         Iterator itpaciente = pacientes.iterator();
         while(itpaciente.hasNext())
         {
-            Paciente paciente = (Paciente)itpaciente.next(); //converte o registro para um objeto do tipo aluno
-            cboPaciente.addItem(paciente.toString());
+            Paciente paciente = (Paciente)itpaciente.next(); //converte o registro para um objeto do tipo paciente
+            cboPaciente.addItem(paciente);
         }
         
     }
@@ -241,35 +252,38 @@ public class TelaConsulta extends javax.swing.JFrame {
     }
     public void limparCampos()
     {
-        txtIdPaciente.setText("");
-        
+        txtIdConsulta.setText("");
+        cboMedico.setSelectedIndex(-1);
+        cboPaciente.setSelectedIndex(-1);
+        txtConvenio.setText("");
     }
     
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         
-        /*
-        if (txtNome.getText().trim().isEmpty() ||
-            txtCpf.getText().trim().isEmpty() ||
-            txtIdade.getText().trim().isEmpty())
+        if (cboMedico.getSelectedIndex() == -1 || cboPaciente.getSelectedIndex() == -1 ||
+            txtConvenio.getText().trim().isEmpty())
         {
             JOptionPane.showMessageDialog(rootPane,"PREENCHA TODOS OS CAMPOS!!!");
         }
         else
         {
-            Paciente paciente = new Paciente();
-            if (!txtIdPaciente.getText().isEmpty())
-            {
-                paciente.setIdpaciente(Integer.parseInt(txtIdPaciente.getText()));
-            }
-            paciente.setNome(txtNome.getText().trim());
-            paciente.setCpf(txtCpf.getText().trim());
-            paciente.setIdade(Integer.parseInt(txtIdade.getText()));
             
+            Consulta consulta = new Consulta();
+            Medico medico = (Medico)cboMedico.getSelectedItem();
+            Paciente paciente = (Paciente)cboPaciente.getSelectedItem();
+        
+            if (!txtIdConsulta.getText().isEmpty())
+            {
+                consulta.setIdconsulta(Integer.parseInt(txtIdConsulta.getText()));
+            }
+            consulta.setId_medico(medico.getIdmedico());
+            consulta.setId_paciente(paciente.getIdpaciente());
+            consulta.setConvenio(txtConvenio.getText());
             
             String msg;
-            if(paciente.getIdpaciente()==0)
+            if(consulta.getIdconsulta()==0)
             {
-                msg = pacienteDAO.cadastrarPaciente(paciente);
+                msg = consultaDAO.cadastrarConsulta(consulta);
                 if (msg.equals("1"))
                 {
                     msg = "CADASTRO EFETUADO COM SUCESSO!";
@@ -278,7 +292,7 @@ public class TelaConsulta extends javax.swing.JFrame {
             }
             else
             {
-                msg = pacienteDAO.atualizarPaciente(paciente);
+                msg = consultaDAO.atualizarConsulta(consulta);
                 if (msg.equals("1"))
                 {
                     msg = "ALTERAÇÃO EFETUADA COM SUCESSO!";
@@ -288,15 +302,15 @@ public class TelaConsulta extends javax.swing.JFrame {
             this.limparCampos();
             this.preencherTabela();
         }
-        */
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int resposta = JOptionPane.showConfirmDialog(rootPane,"DESEJA EXCLUIR O REGISTRO?" );
         if(resposta == 0)
         {
-            String idpaciente = txtIdPaciente.getText();
-            String msg = pacienteDAO.excluirPaciente(idpaciente);
+            String idconsulta = txtIdConsulta.getText();
+            String msg = consultaDAO.excluirConsulta(idconsulta);
             if(msg.equals("1"))
             {
                 msg = "EXCLUSÃO EFETUADA COM SUCESSO!";
@@ -309,7 +323,9 @@ public class TelaConsulta extends javax.swing.JFrame {
 
     private void tabelaConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaConsultasMouseClicked
         btnExcluir.setEnabled(true); //habilita o botão excluir
-        txtIdPaciente.setText(tabelaConsultas.getValueAt(tabelaConsultas.getSelectedRow(),0).toString());
+        txtIdConsulta.setText(tabelaConsultas.getValueAt(tabelaConsultas.getSelectedRow(),0).toString());
+        txtConvenio.setText(tabelaConsultas.getValueAt(tabelaConsultas.getSelectedRow(),3).toString());
+        
         /*
         txtNome.setText(tabelaConsultas.getValueAt(tabelaConsultas.getSelectedRow(),1).toString());
         txtCpf.setText(tabelaConsultas.getValueAt(tabelaConsultas.getSelectedRow(),2).toString());
@@ -356,14 +372,16 @@ public class TelaConsulta extends javax.swing.JFrame {
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnSalvar;
-    private javax.swing.JComboBox<String> cboMedico;
-    private javax.swing.JComboBox<String> cboPaciente;
+    private javax.swing.JComboBox<Object> cboMedico;
+    private javax.swing.JComboBox<Object> cboPaciente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabelaConsultas;
-    private javax.swing.JTextField txtIdPaciente;
+    private javax.swing.JTextField txtConvenio;
+    private javax.swing.JTextField txtIdConsulta;
     // End of variables declaration//GEN-END:variables
 }

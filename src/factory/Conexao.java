@@ -9,7 +9,7 @@ public class Conexao {
     String host = "localhost"; //Servidor do banco de dados
     String stringDeConexao = "jdbc:mysql://" + host + ":3306/" + banco + "?serverTimezone=UTC"; //String de conexão com o Banco
     String usuario = "root"; //Usuario do Banco de Dados
-    String senha = "123456";
+    String senha = "Senha123";
     
     public Connection conexao;
     
